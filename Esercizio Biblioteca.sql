@@ -1,4 +1,4 @@
-1.
+1. 
 select r.*
 from Romanzo r
 where r.AnnoPubblicazione = 2009
@@ -95,3 +95,6 @@ where romanzo.autore = autore.id and autore.cognome = "Don DeLillo"
 select *
 from romanzo, Personaggio, PersonaggioRomanzo
 where personaggio.nome = "Harry" and ((personaggio.id = PersonaggioRomanzo.personaggio) and (romanzo.id = PersonaggioRomanzo.romanzo))
+
+
+/*Vediamo se ora funziona, Test Commit*/
