@@ -16,6 +16,7 @@ where p1.CittàNascita = p2.CittàNascita
 from Persona p, Persona p1, Genia g
 where p.CittàNascita = p1.CittàNascita and ((p.Nome = g.Figlio) and (p1.Nome = g.Genitore)) */
 
+
 /*3. Città in cui è nato almeno un genitore oltre i 50 anni*/
 
 select distinct p.CittàNascita
@@ -33,3 +34,11 @@ from Genia f join Genia g on g.Genitore = f.Figlio
 select count(*) as NumeroMaschiLazio
 from Persona p join Città c on p.CittàNascita = c.Nome
 where p.Sesso='M' and c.Regione = 'Lazio'
+
+
+/*6. Per ogni città, il numero mamme nate in quella città*/
+
+select p.CittàNascita, count(distinct p.Nome)
+from Persona p join Genia g on p.Nome = g.Genitore
+where p.Sesso ='F'
+group by p.CittàNascita
