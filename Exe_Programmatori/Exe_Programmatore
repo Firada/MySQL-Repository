@@ -6,3 +6,13 @@ select a.codice
 from Autore a join Programmatore p on a.codice = p.codice
     join Programma pr on pr.id = a.id
 where pr.anno > 2000 and pr.linguaggio ='Java'
+
+
+/*2. Calcolare il nome e la categoria dei programmatori che sono stati autori di almeno un programma scritto in un linguaggio diverso da Python, ordinando il
+risultato rispetto al nome dei programmatori. */
+
+select p.nome, p.categoria
+from Programmatore p join Autore a on p.codice = a.codice
+    join Programma pr on pr.id = a.id
+where pr.linguaggio != "Python"
+order by p.nome
