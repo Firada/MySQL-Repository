@@ -32,3 +32,11 @@ select distinct a.codice as Autore, a2.codice as CoAutore
 from Autore a join Autore a2 on a.id = a2.id
     join Programma pr on pr.id = a.id
 where pr.linguaggio = "Python" and (a.codice != a2.codice) and (a.codice < a2.codice)
+
+
+/*5. Calcolare il codice ed il nome dei programmatori che hanno scritto solo programmi Java. */
+
+select p.nome, p.codice
+from Programmatore p join Autore a on p.codice = a.codice
+    join Programma pr on pr.id = a.id
+where pr.linguaggio = 'Java'
