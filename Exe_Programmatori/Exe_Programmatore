@@ -50,3 +50,10 @@ select  p.codice, pr.anno, count(*)
 from Programmatore p join Autore a on p.codice = a.codice
     join Programma pr on pr.id = a.id
 group by p.codice, pr.anno
+
+
+ /*7 Per ogni linguaggio calcolare quanti sono in media gli autori dei programmi scritti in quel linguaggio. */
+
+ select pr.linguaggio, count(a.id) as NumeroAutori
+ from Autore a join Programma pr on a.id = pr.id
+ group by pr.linguaggio
