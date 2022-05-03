@@ -39,4 +39,5 @@ where pr.linguaggio = "Python" and (a.codice != a2.codice) and (a.codice < a2.co
 select p.nome, p.codice
 from Programmatore p join Autore a on p.codice = a.codice
     join Programma pr on pr.id = a.id
-where pr.linguaggio = 'Java'
+where pr.linguaggio = 'Java' 
+group by pr.linguaggio
