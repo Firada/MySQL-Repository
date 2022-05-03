@@ -41,3 +41,12 @@ from Programmatore p join Autore a on p.codice = a.codice
     join Programma pr on pr.id = a.id
 where pr.linguaggio = 'Java' 
 group by pr.linguaggio
+
+
+/*6. Per ogni programmatore e per ogni anno calcolare il numero di programmi scritti da quel programmatore in quell’anno, mostrando codice del programmatore,
+anno e numero di programmi scritti. */
+
+select  p.codice, pr.anno, count(*)
+from Programmatore p join Autore a on p.codice = a.codice
+    join Programma pr on pr.id = a.id
+group by p.codice, pr.anno
