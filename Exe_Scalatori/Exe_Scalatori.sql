@@ -47,3 +47,13 @@ from Scalatore sc join Scalata s on sc.cf = s.scalatore
     join Nazione n on n.nome = s.nazione
 group by s.anno, s.nazione having count(*) > 1
 order by s.anno
+
+
+/*8. Per ogni nazione N, calcolare il numero medio di scalate effettuate all’anno in N da scalatori nati in
+nazioni diverse da N. */
+
+
+select s.nazione, count(*)/count(s.anno) as Media
+from Scalatore sc join Scalata s on sc.cf = s.scalatore
+where sc.nazioneNascita != s.nazione
+group by s.nazione
