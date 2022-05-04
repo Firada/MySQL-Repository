@@ -1,7 +1,7 @@
 
 /*1. Calcolare l'insieme (non il multi-insieme) delle coppie (A,B) tali che A è uno scalatore e B è un continente in cui A ha effettuato una scalata. */
 
-select s.scalatore as A, n.continente as B
+select distinct s.scalatore as A, n.continente as B
 from Scalata s join Nazione n on s.nazione = n.nome
 order by s.scalatore
 
@@ -40,3 +40,10 @@ from Scalatore sc join Scalata s on sc.cf = s.scalatore
      left join Nazione n on n.nome = s.nazione
     join Nazione n1 on n1.nome = sc.nazioneNascita
 where n1.continente != 'America' 
+
+
+select  s.anno, s.nazione, count(*) as ConteggioScalate
+from Scalatore sc join Scalata s on sc.cf = s.scalatore
+    join Nazione n on n.nome = s.nazione
+group by s.anno, s.nazione having count(*) > 1
+order by s.anno
