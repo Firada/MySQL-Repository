@@ -58,3 +58,15 @@ select s.nazione, count(*)/count( distinct s.anno) as Media
 from Scalatore sc join Scalata s on sc.cf = s.scalatore
 where sc.nazioneNascita != s.nazione
 group by s.nazione
+
+
+/*9 Calcolare gli scalatori tali che tutte le scalate che hanno effettuato nella nazione di nascita le hanno
+effettuate quando erano minorenni. */
+
+select distinct Scalatore.*
+from Scalatore join scalata on scalatore.cf = scalata.scalatore
+where Scalatore.nazioneNascita in
+    (select Scalata.nazione
+    from Scalata
+    where (Scalata.anno- Scalatore.annoNascita) < 18
+    )
