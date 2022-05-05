@@ -40,6 +40,7 @@ from Scalatore sc left join Scalata s on sc.cf = s.scalatore
     join Nazione n1 on n1.nome = sc.nazioneNascita
 where n1.continente != 'America' 
 
+/*7 . . . . */
 
 select  s.anno, s.nazione, count(*) as ConteggioScalate
 from Scalatore sc join Scalata s on sc.cf = s.scalatore
