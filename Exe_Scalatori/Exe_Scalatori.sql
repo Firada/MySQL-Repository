@@ -63,10 +63,12 @@ group by s.nazione
 /*9 Calcolare gli scalatori tali che tutte le scalate che hanno effettuato nella nazione di nascita le hanno
 effettuate quando erano minorenni. */
 
-select distinct Scalatore.*
-from Scalatore join scalata on scalatore.cf = scalata.scalatore
-where Scalatore.nazioneNascita in
-    (select Scalata.nazione
-    from Scalata
-    where (Scalata.anno- Scalatore.annoNascita) < 18
-    )
+select cf
+from scalatore
+where cf not in (
+
+select Scalatore
+from Scalata join Scalatore on Scalatore.nazioneNascita = scalata.nazione
+where scalata.anno - scalatore.annoNascita > 17
+
+)
