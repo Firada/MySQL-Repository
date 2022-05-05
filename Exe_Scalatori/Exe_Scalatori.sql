@@ -25,11 +25,10 @@ where (s.anno - sc.annoNascita) < 18
 
 /*4 Per ogni nazione, calcolare il numero di scalate effettuate da scalatori nati in quella nazione. */
 
-select n.nome, count(*)
-from Scalatore sc join Scalata s on sc.cf = s.scalatore
-    join Nazione n on n.nome = s.nazione
+select sc.nazioneNascita, count(*)
+from Scalatore sc join Scalata s on sc.cf = s.Scalatore
 where sc.nazioneNascita = s.nazione
-group by n.nome
+group by sc.nazioneNascita
 
 
 /*6 Calcolare codice fiscale, nazione di nascita, continente di nascita di ogni scalatore nato in un continente diverso dall’America, e, solo se egli ha effettuato almeno una scalata, 
